@@ -1,5 +1,6 @@
 import 'package:navaninew/HomeScreen.dart';
-import 'package:navaninew/account_page.dart';
+import 'package:navaninew/Profilepage.dart';
+// import 'package:navaninew/account_page.dart';
 import 'package:navaninew/order_page.dart';
 import 'package:bloc/bloc.dart';
 
@@ -22,7 +23,7 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationState> {
         yield HomeScreen();
         break;
       case NavigationEvents.MyAccountPageClickEvent:
-        yield AccountPage();
+        yield ProfileScreen();
         break;
       case NavigationEvents.MyOrdersPageClickEvent:
         yield OrderPage();

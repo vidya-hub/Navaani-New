@@ -25,120 +25,197 @@ class _HomeScreenState extends State<HomeScreen> {
         ..scale(scaleFactor)
         ..rotateY(isDrawerOpen ? -0.5 : 0.0),
       duration: Duration(milliseconds: 250),
-      child: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            SizedBox(
-              height: 30.0,
-            ),
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 20.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  isDrawerOpen
-                      ? IconButton(
-                          icon: Icon(Icons.arrow_back_ios),
-                          onPressed: () {
-                            setState(() {
-                              xOffset = 0.0;
-                              yOffset = 0.0;
-                              scaleFactor = 1;
-                              isDrawerOpen = false;
-                            });
-                          })
-                      : IconButton(
-                          icon: Icon(Icons.menu),
-                          onPressed: () {
-                            setState(() {
-                              xOffset = 180.0;
-                              yOffset = 150.0;
-                              scaleFactor = 0.6;
-                              isDrawerOpen = true;
-                            });
-                          },
-                        ),
-                  Column(
-                    children: <Widget>[
-                      Text(
-                        'Location',
-                      ),
-                      Row(
-                        children: <Widget>[
-                          Icon(
-                            Icons.location_on,
-                            color: primaryGreen,
+      child: Container(
+        height: MediaQuery.of(context).size.height,
+        child: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              SizedBox(
+                height: 30.0,
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 20.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    isDrawerOpen
+                        ? IconButton(
+                            icon: Icon(Icons.arrow_back_ios),
+                            onPressed: () {
+                              setState(() {
+                                xOffset = 0.0;
+                                yOffset = 0.0;
+                                scaleFactor = 1;
+                                isDrawerOpen = false;
+                              });
+                            })
+                        : IconButton(
+                            icon: Icon(Icons.menu),
+                            onPressed: () {
+                              setState(() {
+                                xOffset = 180.0;
+                                yOffset = 150.0;
+                                scaleFactor = 0.6;
+                                isDrawerOpen = true;
+                              });
+                            },
                           ),
-                          Text('INDIA'),
-                        ],
-                      ),
-                    ],
-                  ),
-                  CircleAvatar(),
-                ],
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
-              margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20.0),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20.0),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Icon(
-                    Icons.search,
-                  ),
-                  Text('Search pet to adopt'),
-                  Icon(
-                    Icons.settings,
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              height: 100,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: catagories.length,
-                itemBuilder: (context, index) {
-                  return Container(
-                    child: Column(
-                      children: [
-                        Container(
-                          padding: EdgeInsets.all(10),
-                          margin: EdgeInsets.only(left: 20),
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              boxShadow: shadowList,
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Image.asset(
-                            catagories[index]['iconPath'],
-                            height: 50,
-                            width: 50,
-                            color: Colors.grey[700],
-                          ),
-                        ),
+                    Column(
+                      children: <Widget>[
                         Text(
-                          catagories[index]['name'],
-                          textAlign: TextAlign.center,
-                        )
+                          'Location',
+                        ),
+                        Row(
+                          children: <Widget>[
+                            Icon(
+                              Icons.location_on,
+                              color: primaryGreen,
+                            ),
+                            Text('INDIA'),
+                          ],
+                        ),
                       ],
                     ),
-                  );
-                },
+                    CircleAvatar(),
+                  ],
+                ),
               ),
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Screen2()));
-              },
-              child: Container(
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
+                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20.0),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Icon(
+                      Icons.search,
+                    ),
+                    Text('Search pet to adopt'),
+                    Icon(
+                      Icons.settings,
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                height: 100,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: catagories.length,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      child: Column(
+                        children: [
+                          Container(
+                            padding: EdgeInsets.all(10),
+                            margin: EdgeInsets.only(left: 20),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                boxShadow: shadowList,
+                                borderRadius: BorderRadius.circular(10)),
+                            child: Image.asset(
+                              catagories[index]['iconPath'],
+                              height: 50,
+                              width: 50,
+                              color: Colors.grey[700],
+                            ),
+                          ),
+                          Text(
+                            catagories[index]['name'],
+                            textAlign: TextAlign.center,
+                          )
+                        ],
+                      ),
+                    );
+                  },
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Screen2()));
+                },
+                child: Container(
+                  height: 240,
+                  margin: EdgeInsets.symmetric(horizontal: 20.0),
+                  child: Row(
+                    children: <Widget>[
+                      Expanded(
+                          child: Stack(
+                        children: <Widget>[
+                          Container(
+                            decoration: BoxDecoration(
+                              color: Colors.blueGrey,
+                              borderRadius: BorderRadius.circular(20.0),
+                              boxShadow: shadowList,
+                            ),
+                            margin: EdgeInsets.only(top: 50.0),
+                          ),
+                          Align(
+                            child: Hero(
+                              child: Image.asset('images/pet-cat2.png'),
+                              tag: 1,
+                            ),
+                          ),
+                        ],
+                      )),
+                      Expanded(
+                          child: Container(
+                        margin: EdgeInsets.only(top: 60.0, bottom: 20.0),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          boxShadow: shadowList,
+                          borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(20.0),
+                            bottomRight: Radius.circular(20.0),
+                          ),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            children: <Widget>[
+                              SizedBox(
+                                height: 7.0,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  Text('Sola'),
+                                  IconButton(
+                                      icon: Icon(Icons.vpn_key), onPressed: null),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 7.0,
+                              ),
+                              Text(
+                                'American Crocodial',
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: <Widget>[
+                                  IconButton(
+                                      icon: Icon(Icons.location_on),
+                                      onPressed: null),
+                                  Text('Mumbai'),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      )),
+                    ],
+                  ),
+                ),
+              ),
+              Container(
                 height: 240,
-                margin: EdgeInsets.symmetric(horizontal: 20.0),
+                margin: EdgeInsets.symmetric(
+                  horizontal: 20.0,
+                ),
                 child: Row(
                   children: <Widget>[
                     Expanded(
@@ -146,17 +223,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       children: <Widget>[
                         Container(
                           decoration: BoxDecoration(
-                            color: Colors.blueGrey,
+                            color: Colors.orange[100],
                             borderRadius: BorderRadius.circular(20.0),
                             boxShadow: shadowList,
                           ),
                           margin: EdgeInsets.only(top: 50.0),
                         ),
                         Align(
-                          child: Hero(
-                            child: Image.asset('images/pet-cat2.png'),
-                            tag: 1,
-                          ),
+                          child: Image.asset('images/pet-cat1.png'),
                         ),
                       ],
                     )),
@@ -198,7 +272,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 IconButton(
                                     icon: Icon(Icons.location_on),
                                     onPressed: null),
-                                Text('Mumbai'),
+                                Text('Surat'),
                               ],
                             ),
                           ],
@@ -208,82 +282,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
               ),
-            ),
-            Container(
-              height: 240,
-              margin: EdgeInsets.symmetric(
-                horizontal: 20.0,
+              SizedBox(
+                height: 20.0,
               ),
-              child: Row(
-                children: <Widget>[
-                  Expanded(
-                      child: Stack(
-                    children: <Widget>[
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.orange[100],
-                          borderRadius: BorderRadius.circular(20.0),
-                          boxShadow: shadowList,
-                        ),
-                        margin: EdgeInsets.only(top: 50.0),
-                      ),
-                      Align(
-                        child: Image.asset('images/pet-cat1.png'),
-                      ),
-                    ],
-                  )),
-                  Expanded(
-                      child: Container(
-                    margin: EdgeInsets.only(top: 60.0, bottom: 20.0),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      boxShadow: shadowList,
-                      borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(20.0),
-                        bottomRight: Radius.circular(20.0),
-                      ),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        children: <Widget>[
-                          SizedBox(
-                            height: 7.0,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              Text('Sola'),
-                              IconButton(
-                                  icon: Icon(Icons.vpn_key), onPressed: null),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 7.0,
-                          ),
-                          Text(
-                            'American Crocodial',
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: <Widget>[
-                              IconButton(
-                                  icon: Icon(Icons.location_on),
-                                  onPressed: null),
-                              Text('Surat'),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  )),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
