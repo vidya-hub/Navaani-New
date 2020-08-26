@@ -1,25 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:navaninew/screens/landing.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:navaninew/DrawerScreen.dart';
+import 'package:navaninew/navigation_bloc.dart';
+import 'package:navaninew/services/usermanagement.dart';
 
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(
+      MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: HomePage(),
+      ),
+    );
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      initialRoute: "/",
-      debugShowCheckedModeBanner: false,
-      routes: {
-        '/': (context) => LandPage(),
-      },
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+    return Scaffold(
+      body: BlocProvider<NavigationBloc>(
+        create: (context) => NavigationBloc(),
+        child: Stack(
+          children: <Widget>[
+            DrawerScreen(),
+            BlocBuilder<NavigationBloc, NavigationState>(
+              builder: (context, navigationState) {
+                return navigationState as Widget;
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

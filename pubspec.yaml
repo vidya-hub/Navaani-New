@@ -39,6 +39,12 @@ dev_dependencies:
   flutter_rating_bar: ^3.0.1+1
   fancy_shimmer_image: ^1.0.1
   flutter_vector_icons:
+  drawerbehavior: ^1.1.2
+  font_awesome_flutter:
+  rxdart:
+  firebase_auth:
+  cloud_firestore:
+  firebase_storage:
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
