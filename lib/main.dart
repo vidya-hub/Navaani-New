@@ -81,16 +81,15 @@ class HomePage extends StatelessWidget {
       home: Scaffold(
         body: BlocProvider<NavigationBloc>(
           create: (context) => NavigationBloc(),
-          child: Stack(
-            children: <Widget>[
-              DrawerScreen(),
+          child:
+              // DrawerScreen(),
               BlocBuilder<NavigationBloc, NavigationState>(
-                builder: (context, navigationState) {
-                  return navigationState as Widget;
-                },
-              ),
-            ],
+            builder: (context, navigationState) {
+              return navigationState as Widget;
+            },
           ),
+          //   ],
+          // ),
         ),
       ),
     );

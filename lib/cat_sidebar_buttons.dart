@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class MenuItem extends StatelessWidget {
-  final IconData icon;
+class CatItem extends StatelessWidget {
+  final imgpath;
   final String title;
   final Function onTap;
-  const MenuItem({this.icon, this.title, this.onTap});
+  const CatItem({this.imgpath, this.title, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -14,10 +14,10 @@ class MenuItem extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Row(
           children: <Widget>[
-            Icon(
-              icon,
-              // color: Colors.cyan,
-              size: 22,
+            Image.asset(
+              imgpath,
+              height: 30,
+              width: 30,
             ),
             SizedBox(
               width: 20.0,

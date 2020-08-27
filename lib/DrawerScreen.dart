@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:navaninew/cat_sidebar_buttons.dart';
 import 'package:navaninew/configuration.dart';
 import 'package:navaninew/navigation_bloc.dart';
 import 'menu_item.dart';
@@ -14,230 +15,126 @@ class _DrawerScreenState extends State<DrawerScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Container(
-        color: primaryGreen,
+        color: Colors.grey[100],
         padding: EdgeInsets.only(top: 40.0, bottom: 60.0, left: 10.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                CircleAvatar(),
-                SizedBox(
-                  width: 10.0,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      'Abhi Sondagar',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      'Active Status',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
+                CircleAvatar(
+                  maxRadius: 40,
+                  child: Image.asset("images/avatar.png"),
                 ),
               ],
             ),
-
-            Divider(
-              height: 30.0,
-              thickness: 0.5,
-              color: Colors.white.withOpacity(0.3),
-              indent: 30,
-              endIndent: 200,
-            ),
-            ExpansionTile(
-              title: Text(
-                "Cloths",
-                style: TextStyle(color: Colors.white, fontSize: 30),
-              ),
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      "Men",
-                      style: TextStyle(color: Colors.white, fontSize: 25),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      "Women",
-                      style: TextStyle(color: Colors.white, fontSize: 20),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      "Kid",
-                      style: TextStyle(color: Colors.white, fontSize: 20),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            ExpansionTile(
-              title: Text(
-                "Jewels",
-                style: TextStyle(color: Colors.white, fontSize: 30),
-              ),
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      "Necklace",
-                      style: TextStyle(color: Colors.white, fontSize: 25),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      "EarRings",
-                      style: TextStyle(color: Colors.white, fontSize: 20),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      "Bangles",
-                      style: TextStyle(color: Colors.white, fontSize: 20),
-                    ),
-                  ),
-                ),
-              ],
+            SizedBox(
+              height: 20,
             ),
             Column(
               children: <Widget>[
-                MenuItem(
-                  icon: Icons.home,
-                  title: 'home',
-                  onTap: () {
-                    BlocProvider.of<NavigationBloc>(context)
-                        .add(NavigationEvents.HomePageClickEvent);
-                  },
+                Text(
+                  'User Name',
+                  style: TextStyle(
+                      // color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20),
                 ),
-                MenuItem(
-                  icon: Icons.home,
-                  title: 'home',
-                  onTap: () {
-                    BlocProvider.of<NavigationBloc>(context)
-                        .add(NavigationEvents.HomePageClickEvent);
-                  },
-                ),
-                MenuItem(
-                  icon: Icons.person,
-                  title: 'My Account',
-                  onTap: () {
-                    BlocProvider.of<NavigationBloc>(context)
-                        .add(NavigationEvents.MyAccountPageClickEvent);
-                  },
-                ),
-                MenuItem(
-                  icon: Icons.shopping_basket,
-                  title: 'My Order',
-                  onTap: () {
-                    BlocProvider.of<NavigationBloc>(context)
-                        .add(NavigationEvents.MyOrdersPageClickEvent);
-                  },
-                ),
-                MenuItem(
-                  icon: Icons.card_giftcard,
-                  title: 'Wishlist',
+                Text(
+                  'User Name@gmail.com',
+                  style: TextStyle(
+                    // color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ],
             ),
             Divider(
               height: 30.0,
-              thickness: 0.5,
-              color: Colors.white.withOpacity(0.3),
-              indent: 30,
-              endIndent: 200,
+              thickness: 0.8,
+              color: Colors.black.withOpacity(0.7),
+              // thickness
+              // indent: 30,
+              // endIndent: 200,
             ),
-
-            // Column(
-            //   children: drawerItems
-            //       .map((element) => Padding(
-            //             padding: const EdgeInsets.all(8.0),
-            //             child: Row(
-            //               children: <Widget>[
-            //                 Icon(
-            //                   element['icon'],
-            //                   color: Colors.white,
-            //                   size: 30.0,
-            //                 ),
-            //                 SizedBox(
-            //                   width: 10.0,
-            //                 ),
-            //                 Text(
-            //                   element['title'],
-
-            //                   style: TextStyle(
-            //                       color: Colors.white,
-            //                       fontWeight: FontWeight.bold,
-            //                       fontSize: 17.0),
-            //                 ),
-            //               ],
-            //             ),
-            //           ))
-            //       .toList(),
-            // ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Icon(
-                  Icons.settings,
-                  color: Colors.white,
+            Expanded(
+              child: SingleChildScrollView(
+                child: Container(
+                  child: Column(
+                    children: <Widget>[
+                      for (var i = 0; i < catagories.length; i++)
+                        CatItem(
+                          imgpath: catagories[i]['iconPath'],
+                          title: catagories[i]['name'],
+                          onTap: () {
+                            BlocProvider.of<NavigationBloc>(context)
+                                .add(NavigationEvents.HomePageClickEvent);
+                          },
+                        ),
+                      MenuItem(
+                        icon: Icons.person,
+                        title: 'My Account',
+                        onTap: () {
+                          BlocProvider.of<NavigationBloc>(context)
+                              .add(NavigationEvents.MyAccountPageClickEvent);
+                        },
+                      ),
+                      MenuItem(
+                        icon: Icons.shopping_basket,
+                        title: 'My Order',
+                        onTap: () {
+                          BlocProvider.of<NavigationBloc>(context)
+                              .add(NavigationEvents.MyOrdersPageClickEvent);
+                        },
+                      ),
+                      MenuItem(
+                        icon: Icons.card_giftcard,
+                        title: 'Wishlist',
+                      ),
+                    ],
+                  ),
                 ),
-                SizedBox(
-                  width: 10.0,
-                ),
-                Text(
-                  'Settings',
-                  style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  width: 10.0,
-                ),
-                Container(
-                  width: 2.0,
-                  height: 20.0,
-                  color: Colors.white,
-                ),
-                SizedBox(
-                  width: 10.0,
-                ),
-                Text(
-                  'Log out',
-                  style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.bold),
-                ),
-              ],
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              height: 20,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Icon(
+                    Icons.settings,
+                    color: Colors.black,
+                  ),
+                  SizedBox(
+                    width: 10.0,
+                  ),
+                  Text(
+                    'Settings',
+                    style: TextStyle(
+                        color: Colors.black, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    width: 10.0,
+                  ),
+                  Container(
+                    width: 2.0,
+                    height: 20.0,
+                    color: Colors.black,
+                  ),
+                  SizedBox(
+                    width: 10.0,
+                  ),
+                  Text(
+                    'Log out',
+                    style: TextStyle(
+                        color: Colors.black, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
             )
           ],
         ),
