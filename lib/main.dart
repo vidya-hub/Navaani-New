@@ -50,32 +50,32 @@ class HomePage extends StatelessWidget {
     //     ),
     //   ),
     // );
-    // // return ThemeProvider(
-    // //   initTheme: kDarkTheme,
-    // //   child: Builder(
-    // //     builder: (context) {
-    // //       return MaterialApp(
-    // //         debugShowCheckedModeBanner: false,
-    // //         theme: ThemeProvider.themeOf(themeContext).data,
-    // //         home: Scaffold(
-    // //     body: BlocProvider<NavigationBloc>(
-    // //       create: (context) => NavigationBloc(),
-    // //       child: Stack(
-    // //         children: <Widget>[
-    // //           DrawerScreen(),
-    // //           BlocBuilder<NavigationBloc, NavigationState>(
-    // //             builder: (context, navigationState) {
-    // //               return navigationState as Widget;
-    // //             },
-    // //           ),
-    // //         ],
-    // //       ),
-    // //     ),
-    // //   ),
-    // //       );
-    // //     },
-    // //   ),
-    // // );
+    // return ThemeProvider(
+    //   initTheme: kDarkTheme,
+    //   child: Builder(
+    //     builder: (context) {
+    //       return MaterialApp(
+    //         debugShowCheckedModeBanner: false,
+    //         theme: ThemeProvider.themeOf(themeContext).data,
+    //         home: Scaffold(
+    //     body: BlocProvider<NavigationBloc>(
+    //       create: (context) => NavigationBloc(),
+    //       child: Stack(
+    //         children: <Widget>[
+    //           DrawerScreen(),
+    //           BlocBuilder<NavigationBloc, NavigationState>(
+    //             builder: (context, navigationState) {
+    //               return navigationState as Widget;
+    //             },
+    //           ),
+    //         ],
+    //       ),
+    //     ),
+    //   ),
+    //       );
+    //     },
+    //   ),
+    // );
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(

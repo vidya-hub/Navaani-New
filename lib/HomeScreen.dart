@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:navaninew/components/catlog-items.dart';
+import 'package:navaninew/components/imgslider.dart';
 import 'package:navaninew/configuration.dart';
 import 'package:navaninew/navigation_bloc.dart';
+import 'package:navaninew/resources/color.dart';
 import 'package:navaninew/screen2.dart';
+import 'package:navaninew/widgets/tileswidget.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'configuration.dart';
+import 'configuration.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class HomeScreen extends StatefulWidget with NavigationState{
+class HomeScreen extends StatefulWidget with NavigationState {
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -13,279 +21,319 @@ class _HomeScreenState extends State<HomeScreen> {
   double yOffset = 0.0;
   double scaleFactor = 1;
   bool isDrawerOpen = false;
-
+  List collectionData = [
+    {
+      'imgURL':
+          'https://i.pinimg.com/736x/c4/b3/4b/c4b34b8639a99ef0787411811b8e82c1.jpg',
+      'isNew': true
+    },
+    {
+      'imgURL':
+          'https://cdn01.buxtonco.com/news/1999/istock-506442302__large.jpg',
+      'isNew': false
+    },
+    {
+      'imgURL':
+          'https://i.pinimg.com/736x/c4/b3/4b/c4b34b8639a99ef0787411811b8e82c1.jpg',
+      'isNew': true
+    },
+    {
+      'imgURL':
+          'https://cdn01.buxtonco.com/news/1999/istock-506442302__large.jpg',
+      'isNew': false
+    },
+    {
+      'imgURL':
+          'https://i.pinimg.com/736x/c4/b3/4b/c4b34b8639a99ef0787411811b8e82c1.jpg',
+      'isNew': true
+    },
+    {
+      'imgURL':
+          'https://cdn01.buxtonco.com/news/1999/istock-506442302__large.jpg',
+      'isNew': false
+    }
+  ];
   @override
   Widget build(BuildContext context) {
-    return AnimatedContainer(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(isDrawerOpen ? 40.0 : 0.0),
-        color: Colors.grey[200],
-      ),
-      transform: Matrix4.translationValues(xOffset, yOffset, 0)
-        ..scale(scaleFactor)
-        ..rotateY(isDrawerOpen ? -0.5 : 0.0),
-      duration: Duration(milliseconds: 250),
-      child: Container(
-        height: MediaQuery.of(context).size.height,
-        child: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              SizedBox(
-                height: 30.0,
-              ),
-              Container(
-                margin: EdgeInsets.symmetric(horizontal: 20.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    isDrawerOpen
-                        ? IconButton(
-                            icon: Icon(Icons.arrow_back_ios),
-                            onPressed: () {
-                              setState(() {
-                                xOffset = 0.0;
-                                yOffset = 0.0;
-                                scaleFactor = 1;
-                                isDrawerOpen = false;
-                              });
-                            })
-                        : IconButton(
-                            icon: Icon(Icons.menu),
-                            onPressed: () {
-                              setState(() {
-                                xOffset = 180.0;
-                                yOffset = 150.0;
-                                scaleFactor = 0.6;
-                                isDrawerOpen = true;
-                              });
-                            },
-                          ),
-                    Column(
-                      children: <Widget>[
-                        Text(
-                          'Location',
-                        ),
-                        Row(
-                          children: <Widget>[
-                            Icon(
-                              Icons.location_on,
-                              color: primaryGreen,
-                            ),
-                            Text('INDIA'),
-                          ],
-                        ),
-                      ],
-                    ),
-                    CircleAvatar(),
-                  ],
+    return SafeArea(
+      child: AnimatedContainer(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(isDrawerOpen ? 40.0 : 0.0),
+          color: Colors.grey[200],
+        ),
+        transform: Matrix4.translationValues(xOffset, yOffset, 0)
+          ..scale(scaleFactor)
+          ..rotateY(isDrawerOpen ? -0.5 : 0.0),
+        duration: Duration(milliseconds: 150),
+        child: Container(
+          height: MediaQuery.of(context).size.height,
+          child: SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                SizedBox(
+                  height: 30.0,
                 ),
-              ),
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20.0),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Icon(
-                      Icons.search,
-                    ),
-                    Text('Search pet to adopt'),
-                    Icon(
-                      Icons.settings,
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                height: 100,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: catagories.length,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      child: Column(
-                        children: [
-                          Container(
-                            padding: EdgeInsets.all(10),
-                            margin: EdgeInsets.only(left: 20),
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                boxShadow: shadowList,
-                                borderRadius: BorderRadius.circular(10)),
-                            child: Image.asset(
-                              catagories[index]['iconPath'],
-                              height: 50,
-                              width: 50,
-                              color: Colors.grey[700],
-                            ),
-                          ),
-                          Text(
-                            catagories[index]['name'],
-                            textAlign: TextAlign.center,
-                          )
-                        ],
-                      ),
-                    );
-                  },
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Screen2()));
-                },
-                child: Container(
-                  height: 240,
+                Container(
                   margin: EdgeInsets.symmetric(horizontal: 20.0),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      Expanded(
-                          child: Stack(
-                        children: <Widget>[
-                          Container(
-                            decoration: BoxDecoration(
-                              color: Colors.blueGrey,
-                              borderRadius: BorderRadius.circular(20.0),
-                              boxShadow: shadowList,
+                      isDrawerOpen
+                          ? IconButton(
+                              icon: Icon(Icons.arrow_back_ios),
+                              onPressed: () {
+                                setState(() {
+                                  xOffset = 0.0;
+                                  yOffset = 0.0;
+                                  scaleFactor = 1;
+                                  isDrawerOpen = false;
+                                });
+                              })
+                          : IconButton(
+                              icon: Icon(Icons.menu),
+                              onPressed: () {
+                                setState(() {
+                                  xOffset = 220.0;
+                                  yOffset = 150.0;
+                                  scaleFactor = 0.6;
+                                  isDrawerOpen = true;
+                                });
+                              },
                             ),
-                            margin: EdgeInsets.only(top: 50.0),
-                          ),
-                          Align(
-                            child: Hero(
-                              child: Image.asset('images/pet-cat2.png'),
-                              tag: 1,
-                            ),
-                          ),
-                        ],
-                      )),
-                      Expanded(
-                          child: Container(
-                        margin: EdgeInsets.only(top: 60.0, bottom: 20.0),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          boxShadow: shadowList,
-                          borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(20.0),
-                            bottomRight: Radius.circular(20.0),
-                          ),
+                      Container(
+                        child: Image.asset(
+                          "images/title-bg.png",
+                          scale: 3,
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            children: <Widget>[
-                              SizedBox(
-                                height: 7.0,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  Text('Sola'),
-                                  IconButton(
-                                      icon: Icon(Icons.vpn_key), onPressed: null),
-                                ],
-                              ),
-                              SizedBox(
-                                height: 7.0,
-                              ),
-                              Text(
-                                'American Crocodial',
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                children: <Widget>[
-                                  IconButton(
-                                      icon: Icon(Icons.location_on),
-                                      onPressed: null),
-                                  Text('Mumbai'),
-                                ],
-                              ),
-                            ],
-                          ),
+                      ),
+                      // Column(
+                      //   children: <Widget>[
+                      //     Text(
+                      //       'Location',
+                      //     ),
+                      //     Row(
+                      //       children: <Widget>[
+                      //         Icon(
+                      //           Icons.location_on,
+                      //           color: primaryGreen,
+                      //         ),
+                      //         Text('INDIA'),
+                      //       ],
+                      //     ),
+                      //   ],
+                      // ),
+                      GestureDetector(
+                        onTap: () {
+                          BlocProvider.of<NavigationBloc>(context)
+                              .add(NavigationEvents.MyAccountPageClickEvent);
+                        },
+                        child: CircleAvatar(
+                          child: Image.asset("images/avatar.png"),
                         ),
-                      )),
+                      ),
                     ],
                   ),
                 ),
-              ),
-              Container(
-                height: 240,
-                margin: EdgeInsets.symmetric(
-                  horizontal: 20.0,
-                ),
-                child: Row(
-                  children: <Widget>[
-                    Expanded(
-                        child: Stack(
-                      children: <Widget>[
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.orange[100],
-                            borderRadius: BorderRadius.circular(20.0),
-                            boxShadow: shadowList,
-                          ),
-                          margin: EdgeInsets.only(top: 50.0),
-                        ),
-                        Align(
-                          child: Image.asset('images/pet-cat1.png'),
-                        ),
-                      ],
-                    )),
-                    Expanded(
-                        child: Container(
-                      margin: EdgeInsets.only(top: 60.0, bottom: 20.0),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        boxShadow: shadowList,
-                        borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(20.0),
-                          bottomRight: Radius.circular(20.0),
-                        ),
+                Container(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
+                  margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20.0),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      
+                      Text('Search Here'),
+                      Icon(
+                        Icons.search,
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                SingleChildScrollView(
+                  child: CarouselSlider(
+                    options: CarouselOptions(
+                      autoPlay: true,
+                      aspectRatio: 2.0,
+                      enlargeCenterPage: true,
+                    ),
+                    items: imageSliders,
+                  ),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                Container(
+                  height: 120,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: catagories.length,
+                    itemBuilder: (context, index) {
+                      return Container(
                         child: Column(
-                          children: <Widget>[
+                          children: [
+                            Container(
+                              padding: EdgeInsets.all(10),
+                              margin: EdgeInsets.only(left: 30),
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  // boxShadow: shadowList,
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Image.asset(
+                                catagories[index]['iconPath'],
+                                height: 60,
+                                width: 60,
+                                // color: Colors.grey[700],
+                              ),
+                            ),
                             SizedBox(
-                              height: 7.0,
+                              height: 5,
                             ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                Text('Sola'),
-                                IconButton(
-                                    icon: Icon(Icons.vpn_key), onPressed: null),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 7.0,
-                            ),
-                            Text(
-                              'American Crocodial',
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: <Widget>[
-                                IconButton(
-                                    icon: Icon(Icons.location_on),
-                                    onPressed: null),
-                                Text('Surat'),
-                              ],
-                            ),
+                            Expanded(
+                              child: Padding(
+                                padding: const EdgeInsets.fromLTRB(27, 0, 0, 0),
+                                child: Text(catagories[index]['name'],
+                                    textAlign: TextAlign.center,
+                                    style:
+                                        Theme.of(context).textTheme.headline6),
+                              ),
+                            )
                           ],
                         ),
-                      ),
-                    )),
-                  ],
+                      );
+                    },
+                  ),
                 ),
-              ),
-              SizedBox(
-                height: 20.0,
-              ),
-            ],
+
+                // for (var i = 0; i < catagories.length; i++)
+                //   Padding(
+                //     padding: const EdgeInsets.all(8.0),
+                //     child: TilesHomepage(
+                //       imagPath: catagories[i]['iconPath'],
+                //       name: catagories[i]['name'],
+                //       price: "200",
+                //     ),
+                //   ),
+                SizedBox(
+                  height: 30.0,
+                ),
+                // SizedBox(height: 30.0),
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 10),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('Trending Collection',
+                                style: Theme.of(context).textTheme.headline5),
+                            SizedBox(height: 4.0),
+                            // Spacer(),
+                            Text('Summer Sale Collection',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyText2
+                                    .apply(color: ThemeColor.FILL)),
+                          ]),
+                      // Spacer(),
+                      GestureDetector(
+                          child: Text('View All',
+                              style: TextStyle(fontSize: 12.0)),
+                          onTap: () {})
+                    ],
+                  ),
+                ),
+                SizedBox(height: 30.0),
+                SizedBox(
+                  height: 400.0,
+                  child: ListView.builder(
+                      physics: BouncingScrollPhysics(),
+                      scrollDirection: Axis.horizontal,
+                      itemCount: collectionData.length,
+                      itemBuilder: (BuildContext ctxt, int index) {
+                        return CatalogItemOne(
+                          imageURL: collectionData[index]['imgURL'],
+                          isNew: collectionData[index]['isNew'],
+                        );
+                      }),
+                ),
+                SizedBox(height: 10.0),
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 10),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('Retro Style',
+                                style: Theme.of(context).textTheme.headline5),
+                            SizedBox(height: 4.0),
+                            // Spacer(),
+                            Text('Olg gauge Collection',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyText2
+                                    .apply(color: ThemeColor.FILL)),
+                          ]),
+                      // Spacer(),
+                      GestureDetector(
+                          child: Text('View All',
+                              style: TextStyle(fontSize: 12.0)),
+                          onTap: () {})
+                    ],
+                  ),
+                ),
+
+                SizedBox(height: 22),
+
+                SizedBox(
+                  height: 400.0,
+                  child: ListView.builder(
+                      physics: BouncingScrollPhysics(),
+                      scrollDirection: Axis.horizontal,
+                      itemCount: collectionData.length,
+                      itemBuilder: (BuildContext ctxt, int index) {
+                        return CatalogItemOne(
+                          imageURL: collectionData[index]['imgURL'],
+                          isNew: collectionData[index]['isNew'],
+                        );
+                      }),
+                ),
+
+                // Row(
+                //   crossAxisAlignment: CrossAxisAlignment.center,
+                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //   children: [
+                //     Column(
+                //         crossAxisAlignment: CrossAxisAlignment.start,
+                //         children: [
+                //           Text('Trending Collection',
+                //               style: Theme.of(context).textTheme.headline2),
+                //           SizedBox(height: 4.0),
+                //           Text('Summer Sale Collection',
+                //               style: Theme.of(context)
+                //                   .textTheme
+                //                   .bodyText2
+                //                   .apply(color: Colors.white)),
+                //         ]),
+                //     GestureDetector(
+                //         child:
+                //             Text('View All', style: TextStyle(fontSize: 12.0)),
+                //         onTap: () {})
+                //   ],
+                // ),
+              ],
+            ),
           ),
         ),
       ),

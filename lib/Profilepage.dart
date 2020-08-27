@@ -5,8 +5,15 @@ import 'package:navaninew/configuration.dart';
 import 'package:navaninew/constants.dart';
 import 'package:navaninew/navigation_bloc.dart';
 import 'package:navaninew/widgets/profile_list_item.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'configuration.dart';
 
-class ProfileScreen extends StatelessWidget with NavigationState {
+class ProfileScreen extends StatefulWidget with NavigationState {
+  @override
+  _ProfileScreenState createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context, height: 896, width: 414, allowFontScaling: true);
@@ -27,10 +34,11 @@ class ProfileScreen extends StatelessWidget with NavigationState {
                 Align(
                   alignment: Alignment.bottomRight,
                   child: Container(
+                    // color: primaryGreen,
                     height: kSpacingUnit.w * 2.5,
                     width: kSpacingUnit.w * 2.5,
                     decoration: BoxDecoration(
-                      color: Theme.of(context).accentColor,
+                      color: primaryGreen,
                       shape: BoxShape.circle,
                     ),
                     child: Center(
@@ -38,7 +46,7 @@ class ProfileScreen extends StatelessWidget with NavigationState {
                       widthFactor: kSpacingUnit.w * 1.5,
                       child: Icon(
                         LineAwesomeIcons.pen,
-                        color: kDarkPrimaryColor,
+                        color: Colors.white,
                         size: ScreenUtil().setSp(kSpacingUnit.w * 1.5),
                       ),
                     ),
@@ -114,7 +122,10 @@ class ProfileScreen extends StatelessWidget with NavigationState {
             children: <Widget>[
               SizedBox(width: kSpacingUnit.w * 3),
               GestureDetector(
-                // onTap: () => Navigator.pop(context),
+                onTap: () {
+                  BlocProvider.of<NavigationBloc>(context)
+                      .add(NavigationEvents.HomePageClickEvent);
+                },
                 child: Icon(
                   LineAwesomeIcons.arrow_left,
                   size: ScreenUtil().setSp(kSpacingUnit.w * 3),
