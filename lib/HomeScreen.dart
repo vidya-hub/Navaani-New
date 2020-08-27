@@ -6,6 +6,7 @@ import 'package:navaninew/configuration.dart';
 import 'package:navaninew/navigation_bloc.dart';
 import 'package:navaninew/resources/color.dart';
 import 'package:navaninew/screen2.dart';
+import 'package:navaninew/search_page.dart';
 import 'package:navaninew/widgets/tileswidget.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'configuration.dart';
@@ -118,31 +119,42 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
                   ),
-                  Container(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
-                    margin:
-                        EdgeInsets.symmetric(vertical: 10, horizontal: 20.0),
-                    decoration: BoxDecoration(
-                      color: Colors.lightBlueAccent[100],
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Text(
-                          'Search Here',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
+                  GestureDetector(
+                    onTap: () {
+                      print("tap");
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Shop(),
                         ),
-                        Icon(
-                          Icons.search,
-                          size: 30,
-                          color: Colors.white,
-                        ),
-                      ],
+                      );
+                    },
+                    child: Container(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 15.0, vertical: 15.0),
+                      margin:
+                          EdgeInsets.symmetric(vertical: 10, horizontal: 20.0),
+                      decoration: BoxDecoration(
+                        color: Colors.lightBlueAccent[100],
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(
+                            'Search Here',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Icon(
+                            Icons.search,
+                            size: 30,
+                            color: Colors.white,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   SizedBox(
