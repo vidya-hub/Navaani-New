@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:navaninew/catbubles.dart';
 import 'package:navaninew/profile_page.dart';
 import 'package:navaninew/configuration.dart';
-import 'package:navaninew/navigation_bloc.dart';
+// import 'package:navaninew/navigation_bloc.dart';
 import 'package:navaninew/screens/cart.dart';
 // import 'package:navaninew/screens/wishlish.dart';
 import 'package:navaninew/screens/wishlist.dart';

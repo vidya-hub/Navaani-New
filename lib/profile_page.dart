@@ -1,9 +1,9 @@
 import 'package:navaninew/HomeScreen.dart';
-import 'package:navaninew/constants.dart';
+// import 'package:navaninew/constants.dart';
 import 'package:navaninew/update.dart';
 import 'package:flutter/material.dart';
-import 'package:navaninew/profile_list_item.dart';
-import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+// import 'package:navaninew/profile_list_item.dart';
+// import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 void main() => runApp(MaterialApp(
       debugShowCheckedModeBanner: false,

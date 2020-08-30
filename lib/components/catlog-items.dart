@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:navaninew/market/product.dart';
 import 'package:navaninew/resources/color.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
@@ -15,11 +16,8 @@ class CatalogItemOne extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(
-          context,
-          '/product',
-          arguments: {},
-        );
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Product()));
       },
       child: Container(
         width: 164.0,

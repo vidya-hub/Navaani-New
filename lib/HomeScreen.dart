@@ -3,15 +3,15 @@ import 'package:navaninew/DrawerScreen.dart';
 import 'package:navaninew/profile_page.dart';
 import 'package:navaninew/components/catlog-items.dart';
 import 'package:navaninew/components/imgslider.dart';
-import 'package:navaninew/configuration.dart';
-import 'package:navaninew/navigation_bloc.dart';
+// import 'package:navaninew/configuration.dart';
+// import 'package:navaninew/navigation_bloc.dart';
 import 'package:navaninew/resources/color.dart';
 // import 'package:navaninew/screen2.dart';
 import 'package:navaninew/search_page.dart';
-import 'package:eva_icons_flutter/eva_icons_flutter.dart';
+// import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'configuration.dart';
-import 'configuration.dart';
+// import 'configuration.dart';
+// import 'configuration.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -210,7 +210,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             decoration: BoxDecoration(
                               borderRadius:
                                   BorderRadiusDirectional.circular(50),
-                              color: Colors.transparent,
+                              color: Colors.amber,
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black26,
@@ -363,18 +363,21 @@ class _HomeScreenState extends State<HomeScreen> {
 
                   SizedBox(height: 22),
 
-                  SizedBox(
-                    height: 400.0,
-                    child: ListView.builder(
-                        physics: BouncingScrollPhysics(),
-                        scrollDirection: Axis.horizontal,
-                        itemCount: collectionData.length,
-                        itemBuilder: (BuildContext ctxt, int index) {
-                          return CatalogItemOne(
-                            imageURL: collectionData[index]['imgURL'],
-                            isNew: collectionData[index]['isNew'],
-                          );
-                        }),
+                  GestureDetector(
+                    onTap: () {},
+                    child: SizedBox(
+                      height: 400.0,
+                      child: ListView.builder(
+                          physics: BouncingScrollPhysics(),
+                          scrollDirection: Axis.horizontal,
+                          itemCount: collectionData.length,
+                          itemBuilder: (BuildContext ctxt, int index) {
+                            return CatalogItemOne(
+                              imageURL: collectionData[index]['imgURL'],
+                              isNew: collectionData[index]['isNew'],
+                            );
+                          }),
+                    ),
                   ),
 
                   // Row(
