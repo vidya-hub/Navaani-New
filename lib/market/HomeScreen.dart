@@ -6,8 +6,6 @@ import 'package:navaninew/components/imgslider.dart';
 // import 'package:navaninew/configuration.dart';
 // import 'package:navaninew/navigation_bloc.dart';
 import 'package:navaninew/resources/color.dart';
-import 'package:navaninew/screens/cart.dart';
-import 'package:navaninew/screens/wishlist.dart';
 // import 'package:navaninew/screen2.dart';
 import 'package:navaninew/search_page.dart';
 // import 'package:eva_icons_flutter/eva_icons_flutter.dart';
@@ -58,42 +56,16 @@ class _HomeScreenState extends State<HomeScreen> {
       'isNew': false
     }
   ];
-  List jewelsdata = [
-    {
-      'imgURL':
-          'https://images.pexels.com/photos/177332/pexels-photo-177332.jpeg?cs=srgb&dl=pexels-scott-webb-177332.jpg&fm=jpg',
-    },
-    {
-      'imgURL':
-          'https://images.pexels.com/photos/3641056/pexels-photo-3641056.jpeg?cs=srgb&dl=pexels-castorly-stock-3641056.jpg&fm=jpg',
-    },
-    {
-      'imgURL':
-          'https://images.pexels.com/photos/445986/pexels-photo-445986.jpeg?cs=srgb&dl=pexels-ana-paula-lima-445986.jpg&fm=jpg',
-    },
-    {
-      'imgURL':
-          'https://images.pexels.com/photos/2735970/pexels-photo-2735970.jpeg?cs=srgb&dl=pexels-say-straight-2735970.jpg&fm=jpg',
-    },
-    {
-      'imgURL':
-          'https://images.pexels.com/photos/3266703/pexels-photo-3266703.jpeg?cs=srgb&dl=pexels-dima-valkov-3266703.jpg&fm=jpg',
-    },
-    {
-      'imgURL':
-          'https://images.pexels.com/photos/2899839/pexels-photo-2899839.jpeg?cs=srgb&dl=pexels-dima-valkov-2899839.jpg&fm=jpg',
-    }
-  ];
 
   List catIconCollection = [
-    'icons/dress.png',
-    'icons/tshirt.png',
-    'icons/men2.png',
-    'icons/boy.png',
-    'icons/jacket.png',
-    'icons/necklace.png',
-    'icons/ring.png',
-    'icons/earrings.png'
+    'images/dress.png',
+    'images/tshirt.png',
+    'images/clothing.png',
+    'images/trousers.png',
+    'images/baseball-cap.png',
+    'images/necklace.png',
+    'images/diamond-ring.png',
+    'images/socks.png'
   ];
   @override
   Widget build(BuildContext context) {
@@ -121,63 +93,22 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Row(
                       // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.all(2.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: <Widget>[
-                              IconButton(
-                                  icon: Icon(Icons.menu),
-                                  onPressed: () {
-                                    _scaffoldKey.currentState.openDrawer();
-                                  }),
-                              Container(
-                                child: Image.asset(
-                                  "images/title-bg.png",
-                                  scale: 4,
-                                ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            IconButton(
+                                icon: Icon(Icons.menu),
+                                onPressed: () {
+                                  _scaffoldKey.currentState.openDrawer();
+                                }),
+                            Container(
+                              child: Image.asset(
+                                "images/title-bg.png",
+                                scale: 4,
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                        Padding(
-                          padding: EdgeInsets.only(
-                              left: MediaQuery.of(context).size.width * 0.3),
-                          child: Row(
-                            children: <Widget>[
-                              IconButton(
-                                  icon: Icon(Icons.person),
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => MyHomePage(),
-                                      ),
-                                    );
-                                  }),
-                              IconButton(
-                                  icon: Icon(Icons.shopping_basket),
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => CartPage(),
-                                      ),
-                                    );
-                                  }),
-                              IconButton(
-                                  icon: Icon(Icons.card_giftcard),
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => WishList(),
-                                      ),
-                                    );
-                                  }),
-                            ],
-                          ),
-                        )
                         // Padding(
                         //   padding: EdgeInsets.symmetric(
                         //       horizontal:
@@ -189,25 +120,23 @@ class _HomeScreenState extends State<HomeScreen> {
                         //     ),
                         //   ),
                         // ),
-                        // GestureDetector(
-                        //   onTap: () {
-                        //     Navigator.push(
-                        //       context,
-                        //       MaterialPageRoute(
-                        //         builder: (context) => MyHomePage(),
-                        //       ),
-                        //     );
-                        //   },
-                        //   child: Padding(
-                        //       padding: EdgeInsets.only(
-                        //           left:
-                        //               MediaQuery.of(context).size.width * 0.45),
-                        //       child: CircleAvatar(
-                        //         child: Image.asset(
-                        //           "images/avatar.png",
-                        //         ),
-                        //       )),
-                        // ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MyHomePage(),
+                              ),
+                            );
+                          },
+                          child: Padding(
+                              padding: EdgeInsets.only(
+                                  left:
+                                      MediaQuery.of(context).size.width * 0.45),
+                              child: CircleAvatar(
+                                child: Image.asset("images/avatar.png",),
+                              )),
+                        ),
                       ],
                     ),
                   ),
@@ -232,14 +161,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       // margin:
                       //     EdgeInsets.symmetric(vertical: 10, horizontal: 20.0),
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: Colors.grey[100],
                         boxShadow: [
-                          BoxShadow(
-                              color: Colors.black12,
-                              blurRadius: 5,
-                              offset: Offset(1, 3))
+                          BoxShadow(color: Colors.black38, blurRadius: 12)
                         ],
-
                         // border: Border.all(color: Colors.black38),
                         borderRadius: BorderRadius.circular(20.0),
                       ),
@@ -266,10 +191,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             padding: EdgeInsets.all(7.0),
                             decoration: BoxDecoration(
                               boxShadow: [
-                                BoxShadow(
-                                    color: Colors.black38,
-                                    blurRadius: 2,
-                                    offset: Offset.zero)
+                                BoxShadow(color: Colors.black38, blurRadius: 2,offset: Offset.zero)
                               ],
                               color: Colors.black45,
 
@@ -313,7 +235,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   catIconCollection[index],
                                 ),
                               ),
-                              radius: 35.0,
+                              radius: 40.0,
                             ),
                           );
                         },
@@ -364,8 +286,18 @@ class _HomeScreenState extends State<HomeScreen> {
                   SizedBox(
                     height: 30,
                   ),
+
+                  // for (var i = 0; i < catagories.length; i++)
+                  //   Padding(
+                  //     padding: const EdgeInsets.all(8.0),
+                  //     child: TilesHomepage(
+                  //       imagPath: catagories[i]['iconPath'],
+                  //       name: catagories[i]['name'],
+                  //       price: "200",
+                  //     ),
+                  //   ),
                   SizedBox(
-                    height: 1.0,
+                    height: 30.0,
                   ),
                   // SizedBox(height: 30.0),
                   Container(
@@ -378,7 +310,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text('Trending Collection',
-                                  style: Theme.of(context).textTheme.headline6),
+                                  style: Theme.of(context).textTheme.headline5),
                               SizedBox(height: 4.0),
                               // Spacer(),
                               Text('Summer Sale Collection',
@@ -390,16 +322,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         // Spacer(),
                         GestureDetector(
                             child: Text('View All',
-                                style: TextStyle(
-                                    fontSize: 15.0,
-                                    fontWeight: FontWeight.bold)),
+                                style: TextStyle(fontSize: 12.0)),
                             onTap: () {})
                       ],
                     ),
                   ),
-                  SizedBox(
-                    height: 1.0,
-                  ),
+                  SizedBox(height: 30.0),
                   Container(
                     // padding: EdgeInsets.only(
                     //     left: MediaQuery.of(context).size.width * 0.09),
@@ -410,66 +338,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           scrollDirection: Axis.horizontal,
                           itemCount: collectionData.length,
                           itemBuilder: (BuildContext ctxt, int index) {
-                            return Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: CatalogItemOne(
-                                imageURL: collectionData[index]['imgURL'],
-                                isNew: collectionData[index]['isNew'],
-                              ),
-                            );
-                          }),
-                    ),
-                  ),
-                  SizedBox(height: 10.0),
-
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: 10),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('New Jewels Collection',
-                                  style: Theme.of(context).textTheme.headline6),
-                              SizedBox(height: 4.0),
-                              // Spacer(),
-                              Text('Celebration Collection',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyText2
-                                      .apply(color: ThemeColor.FILL)),
-                            ]),
-                        // Spacer(),
-                        GestureDetector(
-                            child: Text('View All',
-                                style: TextStyle(
-                                    fontSize: 15.0,
-                                    fontWeight: FontWeight.bold)),
-                            onTap: () {})
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 1.0,
-                  ),
-                  Container(
-                    // padding: EdgeInsets.only(
-                    //     left: MediaQuery.of(context).size.width * 0.09),
-                    child: SizedBox(
-                      height: 400.0,
-                      child: ListView.builder(
-                          physics: BouncingScrollPhysics(),
-                          scrollDirection: Axis.horizontal,
-                          itemCount: collectionData.length,
-                          itemBuilder: (BuildContext ctxt, int index) {
-                            return Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: CatalogItemOne(
-                                imageURL: jewelsdata[index]['imgURL'],
-                                isNew: collectionData[index]['isNew'],
-                              ),
+                            return CatalogItemOne(
+                              imageURL: collectionData[index]['imgURL'],
+                              isNew: collectionData[index]['isNew'],
                             );
                           }),
                     ),
@@ -485,7 +356,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text('Retro Style',
-                                style: Theme.of(context).textTheme.headline6),
+                                style: Theme.of(context).textTheme.headline5),
                             SizedBox(height: 4.0),
                             // Spacer(),
                             Text('Olg gauge Collection',
@@ -498,9 +369,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         // Spacer(),
                         GestureDetector(
                             child: Text('View All',
-                                style: TextStyle(
-                                    fontSize: 15.0,
-                                    fontWeight: FontWeight.bold)),
+                                style: TextStyle(fontSize: 12.0)),
                             onTap: () {})
                       ],
                     ),
@@ -517,12 +386,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           scrollDirection: Axis.horizontal,
                           itemCount: collectionData.length,
                           itemBuilder: (BuildContext ctxt, int index) {
-                            return Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: CatalogItemOne(
-                                imageURL: collectionData[index]['imgURL'],
-                                isNew: collectionData[index]['isNew'],
-                              ),
+                            return CatalogItemOne(
+                              imageURL: collectionData[index]['imgURL'],
+                              isNew: collectionData[index]['isNew'],
                             );
                           }),
                     ),

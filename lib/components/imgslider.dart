@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 
 final List<String> imgList = [
-  'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1951&q=80',
+  'https://cdn01.buxtonco.com/news/1999/istock-506442302__large.jpg',
+  // 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1951&q=80',
   'https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
   'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
-  'https://images.unsplash.com/photo-1479064555552-3ef4979f8908?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1953&q=80',
-  'https://images.unsplash.com/photo-1535232609317-3b20f7310370?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1352&q=80',
-  'https://images.unsplash.com/photo-1559324926-ad3e8bab9df1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1355&q=80'
+  
+  
+  // 'https://images.pexels.com/photos/177332/pexels-photo-177332.jpeg?cs=srgb&dl=pexels-scott-webb-177332.jpg&fm=jpg',
+  'https://images.pexels.com/photos/445986/pexels-photo-445986.jpeg?cs=srgb&dl=pexels-ana-paula-lima-445986.jpg&fm=jpg',
+  'https://images.pexels.com/photos/2899839/pexels-photo-2899839.jpeg?cs=srgb&dl=pexels-dima-valkov-2899839.jpg&fm=jpg'
 ];
 
 final List<Widget> imageSliders = imgList
