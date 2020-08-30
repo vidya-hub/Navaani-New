@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:navaninew/cat_sidebar_buttons.dart';
+import 'package:navaninew/catbubles.dart';
+import 'package:navaninew/profile_page.dart';
 import 'package:navaninew/configuration.dart';
 import 'package:navaninew/navigation_bloc.dart';
+import 'package:navaninew/screens/cart.dart';
+// import 'package:navaninew/screens/wishlish.dart';
+import 'package:navaninew/screens/wishlist.dart';
 import 'menu_item.dart';
 
 class DrawerScreen extends StatefulWidget {
@@ -67,30 +71,43 @@ class _DrawerScreenState extends State<DrawerScreen> {
                         CatItem(
                           imgpath: catagories[i]['iconPath'],
                           title: catagories[i]['name'],
-                          onTap: () {
-                            BlocProvider.of<NavigationBloc>(context)
-                                .add(NavigationEvents.HomePageClickEvent);
-                          },
+                          onTap: () {},
                         ),
                       MenuItem(
                         icon: Icons.person,
                         title: 'My Account',
                         onTap: () {
-                          BlocProvider.of<NavigationBloc>(context)
-                              .add(NavigationEvents.MyAccountPageClickEvent);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MyHomePage(),
+                            ),
+                          );
                         },
                       ),
                       MenuItem(
                         icon: Icons.shopping_basket,
                         title: 'My Order',
                         onTap: () {
-                          BlocProvider.of<NavigationBloc>(context)
-                              .add(NavigationEvents.MyOrdersPageClickEvent);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => CartPage(),
+                            ),
+                          );
                         },
                       ),
                       MenuItem(
                         icon: Icons.card_giftcard,
                         title: 'Wishlist',
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => WishList(),
+                            ),
+                          );
+                        },
                       ),
                     ],
                   ),

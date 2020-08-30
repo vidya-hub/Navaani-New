@@ -12,10 +12,10 @@ List<BoxShadow> shadowList = [
 ];
 
 List<Map> catagories = [
-  {'name': 'men', 'iconPath': 'images/men2.png'},
-  {'name': 'girl', 'iconPath': 'images/girl3.png'},
-  {'name': 'kid', 'iconPath': 'images/kid.png'},
-  {'name': 'neck', 'iconPath': 'images/neck.png'},
+  {'name': 'men', 'iconPath': 'icons/men.png'},
+  {'name': 'girl', 'iconPath': 'icons/cats/dress.png'},
+  {'name': 'kid', 'iconPath': 'icons/cats/jacket.png'},
+  {'name': 'neck', 'iconPath': 'icons/tshirt.png'},
   {'name': 'earrings', 'iconPath': 'images/ear.png'},
   {'name': 'bang', 'iconPath': 'images/bang.png'},
 ];

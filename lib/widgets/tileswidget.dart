@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../configuration.dart';
-import '../screen2.dart';
+// import '../screen2.dart';
 
 class TilesHomepage extends StatelessWidget {
   var imagPath;

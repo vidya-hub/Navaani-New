@@ -10,10 +10,6 @@ class _LoginPageState extends State<LoginPage> {
   String _email;
   String _password;
 
-  FirebaseUser user;
-
-
-
   @override
   Widget build(BuildContext context) {
     return new Scaffold(

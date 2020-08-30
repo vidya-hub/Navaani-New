@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:navaninew/navigation_bloc.dart';
 
-class AccountPage extends StatefulWidget with NavigationState {
+class AccountPage extends StatefulWidget {
   @override
   _AccountPageState createState() => _AccountPageState();
 }

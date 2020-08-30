@@ -30,7 +30,7 @@ class _ShopState extends State<Shop> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomPadding: false,
-      backgroundColor: ThemeColor.BACKGROUND,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.black, size: 20.0),
@@ -44,7 +44,15 @@ class _ShopState extends State<Shop> {
                 .textTheme
                 .headline5
                 .copyWith(fontWeight: FontWeight.bold)),
-        actions: <Widget>[Icon(Icons.search,color: Colors.black,)],
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(right: 20),
+            child: Icon(
+              Icons.search,
+              color: Colors.black,
+            ),
+          )
+        ],
       ),
       body: SafeArea(
         child: Container(
@@ -62,7 +70,7 @@ class _ShopState extends State<Shop> {
                   shape: new RoundedRectangleBorder(
                       borderRadius: new BorderRadius.circular(25.0)),
                   onPressed: () {},
-                  color: Theme.of(context).primaryColor,
+                  color: Colors.blueAccent,
                   child: Text(
                     "VIEW ALL ITEMS",
                     style: TextStyle(
@@ -77,6 +85,7 @@ class _ShopState extends State<Shop> {
               SizedBox(height: 12.0),
 
               Container(
+                alignment: Alignment.center,
                 padding: EdgeInsets.only(
                     top: 0, left: 16.0, right: 16.0, bottom: 0.0),
                 child: Text('Choose catergory',
@@ -93,15 +102,23 @@ class _ShopState extends State<Shop> {
                   itemCount: categories.length,
                   itemBuilder: (BuildContext ctx, index) {
                     return FlatButton(
-                      shape: new BorderDirectional(
-                          bottom: BorderSide(color: ThemeColor.FILL)),
+                      // shape: new BorderDirectional(
+                      //     bottom: BorderSide(color: ThemeColor.FILL)),
                       onPressed: () {},
-                      child: Align(
-                        alignment: Alignment.topLeft,
-                        child: Text(
-                          categories[index]['title'],
-                          style: Theme.of(context).textTheme.headline5.apply(),
-                        ),
+                      child: Column(
+                        children: <Widget>[
+                          Align(
+                            alignment: Alignment.center,
+                            child: Text(
+                              categories[index]['title'],
+                              style:
+                                  Theme.of(context).textTheme.headline5.apply(),
+                            ),
+                          ),
+                          Divider(
+                            thickness: 1,
+                          )
+                        ],
                       ),
                     );
                   },

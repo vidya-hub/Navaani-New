@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:navaninew/DrawerScreen.dart';
+import 'package:navaninew/profile_page.dart';
 import 'package:navaninew/components/catlog-items.dart';
 import 'package:navaninew/components/imgslider.dart';
 import 'package:navaninew/configuration.dart';
 import 'package:navaninew/navigation_bloc.dart';
 import 'package:navaninew/resources/color.dart';
-import 'package:navaninew/screen2.dart';
+// import 'package:navaninew/screen2.dart';
 import 'package:navaninew/search_page.dart';
-import 'package:navaninew/widgets/tileswidget.dart';
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'configuration.dart';
 import 'configuration.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-class HomeScreen extends StatefulWidget with NavigationState {
+class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -65,59 +65,72 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: SafeArea(
         child: Container(
-          color: Colors.grey[200],
+          color: Colors.white,
           child: Container(
             height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
             child: SingleChildScrollView(
               child: Column(
                 children: <Widget>[
                   SizedBox(
-                    height: 30.0,
+                    height: MediaQuery.of(context).size.height * 0.03,
                   ),
                   Container(
-                    margin: EdgeInsets.symmetric(horizontal: 20.0),
+                    width: MediaQuery.of(context).size.width,
+                    // margin: EdgeInsets.symmetric(
+                    //     horizontal: MediaQuery.of(context).size.width * 0.07),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        IconButton(
-                            icon: Icon(Icons.menu),
-                            onPressed: () {
-                              _scaffoldKey.currentState.openDrawer();
-                            }),
-
-                        Container(
-                          child: Image.asset(
-                            "images/title-bg.png",
-                            scale: 3,
-                          ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            IconButton(
+                                icon: Icon(Icons.menu),
+                                onPressed: () {
+                                  _scaffoldKey.currentState.openDrawer();
+                                }),
+                            Container(
+                              child: Image.asset(
+                                "images/title-bg.png",
+                                scale: 4,
+                              ),
+                            ),
+                          ],
                         ),
-                        // Column(
-                        //   children: <Widget>[
-                        //     Text(
-                        //       'Location',
+                        // Padding(
+                        //   padding: EdgeInsets.symmetric(
+                        //       horizontal:
+                        //           MediaQuery.of(context).size.width * 0.09),
+                        //   child: Container(
+                        //     child: Image.asset(
+                        //       "images/title-bg.png",
+                        //       scale: 3,
                         //     ),
-                        //     Row(
-                        //       children: <Widget>[
-                        //         Icon(
-                        //           Icons.location_on,
-                        //           color: primaryGreen,
-                        //         ),
-                        //         Text('INDIA'),
-                        //       ],
-                        //     ),
-                        //   ],
+                        //   ),
                         // ),
                         GestureDetector(
                           onTap: () {
-                            BlocProvider.of<NavigationBloc>(context)
-                                .add(NavigationEvents.MyAccountPageClickEvent);
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MyHomePage(),
+                              ),
+                            );
                           },
-                          child: CircleAvatar(
-                            child: Image.asset("images/avatar.png"),
-                          ),
+                          child: Padding(
+                              padding: EdgeInsets.only(
+                                  left:
+                                      MediaQuery.of(context).size.width * 0.45),
+                              child: CircleAvatar(
+                                child: Image.asset("images/avatar.png"),
+                              )),
                         ),
                       ],
                     ),
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.02,
                   ),
                   GestureDetector(
                     onTap: () {
@@ -130,36 +143,122 @@ class _HomeScreenState extends State<HomeScreen> {
                       );
                     },
                     child: Container(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 15.0, vertical: 15.0),
-                      margin:
-                          EdgeInsets.symmetric(vertical: 10, horizontal: 20.0),
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      // padding: EdgeInsets.symmetric(
+                      //     horizontal: 15.0, vertical: 15.0),
+                      // margin:
+                      //     EdgeInsets.symmetric(vertical: 10, horizontal: 20.0),
                       decoration: BoxDecoration(
-                        color: Colors.lightBlueAccent[100],
+                        color: Colors.grey[100],
+                        boxShadow: [
+                          BoxShadow(color: Colors.black38, blurRadius: 12)
+                        ],
+                        // border: Border.all(color: Colors.black38),
                         borderRadius: BorderRadius.circular(20.0),
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          Text(
-                            'Search Here',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              children: <Widget>[
+                                Icon(Icons.search,
+                                    size: 20, color: Colors.black54),
+                                Text(
+                                  'Search Here',
+                                  style: TextStyle(
+                                    color: Colors.black54,
+                                    fontSize: 15,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                          Icon(
-                            Icons.search,
-                            size: 30,
-                            color: Colors.white,
+                          Container(
+                            padding: EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(color: Colors.black38, blurRadius: 10)
+                              ],
+                              color: Colors.blue,
+                              // border: Border.all(color: Colors.black38),
+                              borderRadius: BorderRadius.circular(35.0),
+                            ),
+                            // color: Colors.blue,
+                            child: Icon(Icons.business_center,
+                                size: 28, color: Colors.white),
                           ),
                         ],
                       ),
                     ),
                   ),
                   SizedBox(
-                    height: 20,
+                    height: MediaQuery.of(context).size.height * 0.01,
                   ),
+                  Container(
+                    height: MediaQuery.of(context).size.height * 0.1,
+                    // color: Colors.transparent,
+                    width: MediaQuery.of(context).size.width,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            // height: MediaQuery.of(context).size.width * 0.00001,
+                            decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadiusDirectional.circular(50),
+                              color: Colors.transparent,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black26,
+                                  blurRadius: 20,
+                                )
+                              ],
+                            ),
+                            child: CircleAvatar(
+                              backgroundColor: Colors.white,
+                              radius: MediaQuery.of(context).size.width * 0.06,
+                              backgroundImage: AssetImage("icons/jacket.png"),
+                            ),
+                          ),
+                        );
+                      },
+                      itemCount: 10,
+                    ),
+                  ),
+
+                  // Container(
+                  //   height: MediaQuery.of(context).size.height * 0.1,
+                  //   color: Colors.white,
+                  //   width: MediaQuery.of(context).size.width,
+                  //   child: ListView.builder(
+                  //     scrollDirection: Axis.horizontal,
+                  //     itemCount: catagories.length,
+                  //     itemBuilder: (context, index) {
+                  //       return Container(
+                  //         // padding: EdgeInsets.all(10),
+                  //         height: MediaQuery.of(context).size.height * 0.06,
+                  //         width: MediaQuery.of(context).size.width * 0.13,
+                  //         margin: EdgeInsets.only(
+                  //             left: MediaQuery.of(context).size.width * 0.09),
+                  //         child: CircleAvatar(
+                  //           backgroundColor: Colors.blue,
+                  //           child: Center(
+                  //             child: Image.asset(
+                  //               catagories[index]['iconPath'],
+                  //               // height: MediaQuery.of(context).size.height * 0.06,
+                  //               // width: MediaQuery.of(context).size.height * 0.008,
+                  //               // color: Colors.grey[700],
+                  //             ),
+                  //           ),
+                  //         ),
+                  //       );
+                  //     },
+                  //   ),
+                  // ),
                   SingleChildScrollView(
                     child: CarouselSlider(
                       options: CarouselOptions(
@@ -172,49 +271,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   SizedBox(
                     height: 30,
-                  ),
-                  Container(
-                    height: 120,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: catagories.length,
-                      itemBuilder: (context, index) {
-                        return Container(
-                          child: Column(
-                            children: [
-                              Container(
-                                padding: EdgeInsets.all(10),
-                                margin: EdgeInsets.only(left: 30),
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    // boxShadow: shadowList,
-                                    borderRadius: BorderRadius.circular(10)),
-                                child: Image.asset(
-                                  catagories[index]['iconPath'],
-                                  height: 60,
-                                  width: 60,
-                                  // color: Colors.grey[700],
-                                ),
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(27, 0, 0, 0),
-                                  child: Text(catagories[index]['name'],
-                                      textAlign: TextAlign.center,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .headline6),
-                                ),
-                              )
-                            ],
-                          ),
-                        );
-                      },
-                    ),
                   ),
 
                   // for (var i = 0; i < catagories.length; i++)
@@ -258,18 +314,22 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   SizedBox(height: 30.0),
-                  SizedBox(
-                    height: 400.0,
-                    child: ListView.builder(
-                        physics: BouncingScrollPhysics(),
-                        scrollDirection: Axis.horizontal,
-                        itemCount: collectionData.length,
-                        itemBuilder: (BuildContext ctxt, int index) {
-                          return CatalogItemOne(
-                            imageURL: collectionData[index]['imgURL'],
-                            isNew: collectionData[index]['isNew'],
-                          );
-                        }),
+                  Container(
+                    // padding: EdgeInsets.only(
+                    //     left: MediaQuery.of(context).size.width * 0.09),
+                    child: SizedBox(
+                      height: 400.0,
+                      child: ListView.builder(
+                          physics: BouncingScrollPhysics(),
+                          scrollDirection: Axis.horizontal,
+                          itemCount: collectionData.length,
+                          itemBuilder: (BuildContext ctxt, int index) {
+                            return CatalogItemOne(
+                              imageURL: collectionData[index]['imgURL'],
+                              isNew: collectionData[index]['isNew'],
+                            );
+                          }),
+                    ),
                   ),
                   SizedBox(height: 10.0),
                   Container(
@@ -279,18 +339,19 @@ class _HomeScreenState extends State<HomeScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('Retro Style',
-                                  style: Theme.of(context).textTheme.headline5),
-                              SizedBox(height: 4.0),
-                              // Spacer(),
-                              Text('Olg gauge Collection',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyText2
-                                      .apply(color: ThemeColor.FILL)),
-                            ]),
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('Retro Style',
+                                style: Theme.of(context).textTheme.headline5),
+                            SizedBox(height: 4.0),
+                            // Spacer(),
+                            Text('Olg gauge Collection',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyText2
+                                    .apply(color: ThemeColor.FILL)),
+                          ],
+                        ),
                         // Spacer(),
                         GestureDetector(
                             child: Text('View All',

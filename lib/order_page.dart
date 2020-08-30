@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:navaninew/navigation_bloc.dart';
 
-class OrderPage extends StatefulWidget with NavigationState {
+class OrderPage extends StatefulWidget {
   @override
   _OrderPageState createState() => _OrderPageState();
 }
