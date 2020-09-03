@@ -24,6 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
   bloc: 
+  http: ^0.12.2
   theme_provider: 
   flutter_bloc: 
   badges: 
@@ -37,6 +38,7 @@ dependencies:
   # firebase_auth:
   # cloud_firestore:
   # firebase_storage:
+  flutter_svg: ^0.17.4
   line_awesome_flutter: 
   flutter_screenutil: 
   animated_theme_switcher: 

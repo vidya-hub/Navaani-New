@@ -16,6 +16,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 // import 'configuration.dart';
 
 class HomeScreen extends StatefulWidget {
+  final userId;
+  HomeScreen({this.userId});
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -95,6 +97,12 @@ class _HomeScreenState extends State<HomeScreen> {
     'icons/ring.png',
     'icons/earrings.png'
   ];
+  @override
+  void initState() {
+    super.initState();
+    // print(widget.userId);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
