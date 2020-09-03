@@ -7,17 +7,13 @@ import 'package:http/http.dart' as http;
 import 'package:navaninew/HomeScreen.dart';
 import 'package:navaninew/welcomepage/Screens/Login/components/background.dart';
 import 'package:navaninew/welcomepage/Screens/Signup/signup_screen.dart';
+import 'package:navaninew/welcomepage/Screens/forgotpassword.dart';
 import 'package:navaninew/welcomepage/components/already_have_an_account_acheck.dart';
 import 'package:navaninew/welcomepage/components/rounded_button.dart';
-// import 'package:navaninew/welcomepage/components/rounded_input_field.dart';
-// import 'package:navaninew/welcomepage/components/rounded_password_field.dart';
 import 'package:navaninew/welcomepage/components/text_field_container.dart';
 import 'package:navaninew/welcomepage/constants.dart';
 
 class Body extends StatefulWidget {
-  // const Body({
-  //   Key key,
-  // }) : super(key: key);
   @override
   _BodyState createState() => _BodyState();
 }
@@ -55,8 +51,6 @@ class _BodyState extends State<Body> {
   Future<dynamic> logIn_api(String username, String password) async {
     var login_response =
         await http.get("$urlOriginal/login/$username/pass/$password");
-    // var userId = json.decode(login_response.body)[0]['_id'];
-    // print(login_response.body);
     return login_response.body;
   }
 
@@ -105,7 +99,6 @@ class _BodyState extends State<Body> {
               child: TextField(
                 controller: _passWord,
                 obscureText: true,
-                // onChanged: (),
                 cursorColor: kPrimaryColor,
                 decoration: InputDecoration(
                   hintText: "Password",
@@ -131,10 +124,22 @@ class _BodyState extends State<Body> {
                             fontWeight: FontWeight.bold, color: Colors.red),
                       ),
                       SizedBox(width: size.width * 0.03),
-                      Text(
-                        "Forgot",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 15),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return ForgotPassword();
+                              },
+                            ),
+                          );
+                        },
+                        child: Text(
+                          "Forgot",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 15),
+                        ),
                       ),
                     ],
                   )
@@ -143,29 +148,31 @@ class _BodyState extends State<Body> {
                 text: "LOGIN",
                 press: () async {
                   var loginbody =
-                      await logIn_api(_userName.text, _passWord.text);
+                      await logIn_api(_userName.text.trim(), _passWord.text.trim());
                   if (loginbody != "[]") {
                     print(json.decode(loginbody)[0]['_id']);
-                    // Navigator.push(
-                    //   context,
-                    // MaterialPageRoute(
-                    //   builder: (context) {
-                    //     return HomeScreen(
-                    //       userId: json.decode(loginbody)[0]['_id'],
-                    //     );
-                    //   },
-                    // ),
-                    // );
+                    Navigator.push(
+                      context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return HomeScreen(
+                          userId: json.decode(loginbody)[0]['_id'],
+                        );
+                      },
+                    ),
+                    );
                   } else {
                     print("null data");
                     // print(await checkUsername(_userName.text));
-                    if (await checkUsername(_userName.text) == "false") {
+                    if (await checkUsername(_userName.text.trim()) == "false") {
+                      // user is there 
                       print("password is not correct");
                       setState(() {
                         incorrect = true; //password is not correct
                         helpertext = null;
                       });
-                    } else if (await checkUsername(_userName.text) == "true") {
+                    } else if (await checkUsername(_userName.text.trim()) == "true") {
+                      // user is not there
                       print("username is not correct");
                       setState(() {
                         helpertext = "User Name Is Incorrect";
