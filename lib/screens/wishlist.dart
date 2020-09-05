@@ -45,85 +45,93 @@ class _WishListState extends State<WishList> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
         child: Container(
           child: SafeArea(
             child: Column(
               children: <Widget>[
                 SizedBox(
-                  height: 20,
+                  height: MediaQuery.of(context).size.height * 0.02,
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25),
-                  child: Align(
-                    alignment: Alignment.topLeft,
-                    child: Container(
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => HomeScreen(),
-                            ),
-                          );
-                        },
-                        child: Icon(
-                          Icons.arrow_back,
-                          color: Colors.black,
-                          size: 40,
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height * 0.1,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Align(
+                      alignment: Alignment.topLeft,
+                      child: Container(
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => HomeScreen(),
+                              ),
+                            );
+                          },
+                          child: Icon(
+                            Icons.arrow_back_ios,
+                            color: Colors.black,
+                            size: 30,
+                          ),
                         ),
                       ),
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 20,
-                ),
+                // SizedBox(
+                //   height: 20,
+                // ),
                 Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height * 0.1,
                   child: Align(
                     alignment: Alignment.topLeft,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 30),
-                          child: Text(
-                            "WishList",
+                    child: Center(
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          Text(
+                            "Wishlist",
                             style: TextStyle(
                                 // fontWeight: FontWeight.w300,
                                 fontSize: 40.0,
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold),
                           ),
-                        ),
-                        Column(
-                          children: <Widget>[
-                            Text(
-                              "1 Item",
-                              style: TextStyle(
-                                // fontWeight: FontWeight.w300,
-                                fontSize: 20.0,
-                                color: Colors.black,
-                                fontWeight: FontWeight.w300,
+                          Column(
+                            children: <Widget>[
+                              Text(
+                                "1 Item",
+                                style: TextStyle(
+                                  // fontWeight: FontWeight.w300,
+                                  fontSize: 20.0,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w300,
+                                ),
                               ),
-                            ),
-                            Text(
-                              "Rs 100/-",
-                              style: TextStyle(
-                                // fontWeight: FontWeight.w300,
-                                fontSize: 20.0,
-                                color: Colors.black,
-                                fontWeight: FontWeight.w700,
+                              Text(
+                                "Rs 100/-",
+                                style: TextStyle(
+                                  // fontWeight: FontWeight.w300,
+                                  fontSize: 20.0,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w700,
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ],
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 40,
-                ),
+                // SizedBox(
+                //   height: 40,
+                // ),
                 // for (var i = 0; i < collectionData.length; i++)
 
                 Expanded(

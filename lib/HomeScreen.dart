@@ -120,102 +120,64 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Column(
                 children: <Widget>[
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.03,
+                    height: MediaQuery.of(context).size.height * 0.01,
                   ),
                   Container(
                     width: MediaQuery.of(context).size.width,
-                    // margin: EdgeInsets.symmetric(
-                    //     horizontal: MediaQuery.of(context).size.width * 0.07),
+                    height: MediaQuery.of(context).size.height * 0.1,
                     child: Row(
-                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.all(2.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: <Widget>[
-                              IconButton(
-                                  icon: Icon(Icons.menu),
-                                  onPressed: () {
-                                    _scaffoldKey.currentState.openDrawer();
-                                  }),
-                              Container(
-                                child: Image.asset(
-                                  "images/title-bg.png",
-                                  scale: 4,
-                                ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            IconButton(
+                                icon: Icon(Icons.menu),
+                                onPressed: () {
+                                  _scaffoldKey.currentState.openDrawer();
+                                }),
+                            Container(
+                              child: Image.asset(
+                                "images/title-bg.png",
+                                scale: 4,
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                        Padding(
-                          padding: EdgeInsets.only(
-                              left: MediaQuery.of(context).size.width * 0.3),
-                          child: Row(
-                            children: <Widget>[
-                              IconButton(
-                                  icon: Icon(Icons.person),
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => MyHomePage(),
-                                      ),
-                                    );
-                                  }),
-                              IconButton(
-                                  icon: Icon(Icons.shopping_basket),
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => CartPage(),
-                                      ),
-                                    );
-                                  }),
-                              IconButton(
-                                  icon: Icon(Icons.card_giftcard),
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => WishList(),
-                                      ),
-                                    );
-                                  }),
-                            ],
-                          ),
+                        Row(
+                          children: <Widget>[
+                            IconButton(
+                                icon: Icon(Icons.person),
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => MyHomePage(),
+                                    ),
+                                  );
+                                }),
+                            IconButton(
+                                icon: Icon(Icons.shopping_basket),
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => CartPage(),
+                                    ),
+                                  );
+                                }),
+                            IconButton(
+                                icon: Icon(Icons.card_giftcard),
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => WishList(),
+                                    ),
+                                  );
+                                }),
+                          ],
                         )
-                        // Padding(
-                        //   padding: EdgeInsets.symmetric(
-                        //       horizontal:
-                        //           MediaQuery.of(context).size.width * 0.09),
-                        //   child: Container(
-                        //     child: Image.asset(
-                        //       "images/title-bg.png",
-                        //       scale: 3,
-                        //     ),
-                        //   ),
-                        // ),
-                        // GestureDetector(
-                        //   onTap: () {
-                        //     Navigator.push(
-                        //       context,
-                        //       MaterialPageRoute(
-                        //         builder: (context) => MyHomePage(),
-                        //       ),
-                        //     );
-                        //   },
-                        //   child: Padding(
-                        //       padding: EdgeInsets.only(
-                        //           left:
-                        //               MediaQuery.of(context).size.width * 0.45),
-                        //       child: CircleAvatar(
-                        //         child: Image.asset(
-                        //           "images/avatar.png",
-                        //         ),
-                        //       )),
-                        // ),
                       ],
                     ),
                   ),
@@ -243,9 +205,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: Colors.white,
                         boxShadow: [
                           BoxShadow(
-                              color: Colors.black12,
-                              blurRadius: 5,
-                              offset: Offset(1, 3))
+                            color: Colors.black12,
+                            blurRadius: 5,
+                            offset: Offset(1, 3),
+                          ),
                         ],
 
                         // border: Border.all(color: Colors.black38),

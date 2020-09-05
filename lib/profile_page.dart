@@ -25,132 +25,149 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Column(
-          children: [
-            SizedBox(
-              height: 18,
-              child: Container(
-                color: Colors.blueAccent,
+        body: Container(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          child: Column(
+            children: [
+              SizedBox(
+                height: 18,
+                child: Container(
+                  color: Colors.blueAccent,
+                ),
               ),
-            ),
-            Container(
-              height: MediaQuery.of(context).size.height * 0.3,
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  ClipPath(
-                    clipper: MyClipper(),
-                    child: Container(
-                      color: Colors.blueAccent,
-                    ),
-                  ),
-                  Container(
-                    alignment: Alignment.topCenter,
-                    padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 10.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => HomeScreen(),
-                              ),
-                            );
-                          },
-                          child: Icon(
-                            Icons.arrow_back_ios,
-                            color: Colors.white,
-                          ),
-                        ),
-                        Text(
-                          'Profile',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 17.0,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => UpdateProfile()),
-                            );
-                          },
-                          child: Text(
-                            'Edit',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 17.0,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    alignment: Alignment.bottomCenter,
-                    child: CircleAvatar(
-                      backgroundColor: Colors.black54,
-                      maxRadius: 55.0,
-                      child: Icon(
-                        Icons.person_add,
-                        color: Colors.white,
+              Container(
+                height: MediaQuery.of(context).size.height * 0.3,
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    ClipPath(
+                      clipper: MyClipper(),
+                      child: Container(
+                        color: Colors.blueAccent,
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 10.0),
-            Container(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    'User Name',
-                    style: TextStyle(
-                      color: Colors.black87,
-                      fontSize: 17.0,
-                      fontWeight: FontWeight.bold,
+                    Container(
+                      alignment: Alignment.topCenter,
+                      width: MediaQuery.of(context).size.width,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => HomeScreen(),
+                                  ),
+                                );
+                              },
+                              child: Icon(
+                                Icons.arrow_back_ios,
+                                color: Colors.white,
+                              ),
+                            ),
+                            Text(
+                              'Profile',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 17.0,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => UpdateProfile()),
+                                );
+                              },
+                              child: Text(
+                                'Edit',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 17.0,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                  ),
-                  Text(
-                    'Useremail@gmail.com',
-                    style: TextStyle(
-                      color: Colors.black54,
-                      fontSize: 14.0,
+                    Container(
+                      alignment: Alignment.bottomCenter,
+                      child: CircleAvatar(
+                        backgroundColor: Colors.black54,
+                        maxRadius: 55.0,
+                        child: Icon(
+                          Icons.person_add,
+                          color: Colors.white,
+                        ),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Divider(
-              color: Colors.black26,
-              thickness: 1,
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            ProfilePageButton(
-              name: "My Orders",
-            ),
-            ProfilePageButton(
-              name: "My Wishlist",
-            ),
-            ProfilePageButton(
-              name: "MyOrders",
-            ),
-            ProfilePageButton(
-              name: "MyOrders",
-            ),
-          ],
+              SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+              Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      'User Name',
+                      style: TextStyle(
+                        color: Colors.black87,
+                        fontSize: 17.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      'Useremail@gmail.com',
+                      style: TextStyle(
+                        color: Colors.black54,
+                        fontSize: 14.0,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.01,
+              ),
+              Divider(
+                color: Colors.black26,
+                thickness: 1,
+              ),
+              // SizedBox(
+              //   height: MediaQuery.of(context).size.height * 0.02,
+              // ),
+              Expanded(
+                child: Container(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      ProfilePageButton(
+                        name: "My Orders",
+                      ),
+                      ProfilePageButton(
+                        name: "My Wishlist",
+                      ),
+                      ProfilePageButton(
+                        name: "MyOrders",
+                      ),
+                      ProfilePageButton(
+                        name: "MyOrders",
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
